@@ -1,0 +1,42 @@
+{
+  "name": "vladaurbanek/php-fio-api",
+  "type": "library",
+  "description": "PHP Fio API implemention",
+  "keywords": [
+    "fio",
+    "banking",
+    "api"
+  ],
+  "homepage": "https://vladaurbanek.cz",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Vladislav Urbanek",
+      "email": "jsem@vladaurbanek.cz",
+      "homepage": "https://vladaurbanek.cz/",
+      "role": "Software Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.5",
+    "ext-curl": "*",
+    "guzzlehttp/guzzle": "^7.0.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.7|~5.0",
+    "squizlabs/php_codesniffer": "~2.3",
+    "satooshi/php-coveralls": "^1.0"
+  },
+  "suggest": {
+    "kdyby/curl-ca-bundle": "Provides regularly updated root certificates list"
+  },
+  "autoload": {
+    "psr-4": {
+      "FioApi\\": "src/FioApi"
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "phpcs": "phpcs --standard=PSR2 src && phpcs --standard=PSR2 tests"
+  }
+}
