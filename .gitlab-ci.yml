@@ -1,13 +1,9 @@
-build-job:
-  stage: build
-  script:
-    - echo "Hello, $GITLAB_USER_LOGIN!"
+stages:
+  - deploy
 
-deploy-prod:
+deploy:
   stage: deploy
   script:
-    - echo "Commit tag $CI_COMMIT_TAG tag."
-    - echo "Deploy token $DEPLOY_TOKEN token."
-    - echo "Project ID $CI_PROJECT_ID id."
-    - curl -sS --show-error --fail --data tag=${CI_COMMIT_TAG} "https://gitlab+deploy-token-1783388:${DEPLOY_TOKEN}@gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/composer"
+    - apk add curl
+    - 'curl --header "Job-Token: $CI_JOB_TOKEN" --data tag=<tag> "${CI_API_V4_URL}/projects/$CI_PROJECT_ID/packages/composer"'
   environment: production
